@@ -26,7 +26,7 @@ function managerData() {
             type: "input",
             message: "Who is the manager of this project?",
             name: "managerName",
-            default: "Bob Boberton"
+            default: "Todd Smith"
         },
         {   // Employee ID.
             type: "input",
@@ -49,11 +49,11 @@ function managerData() {
             manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.officeNumber);
             teamTitle = managerAnswers.teamTitle;
             console.log("Now we will ask for employee information.")
-            lesserEmployeeData();
+            underEmployeeData();
         });
 }
 
-function lesserEmployeeData() {
+function underEmployeeData() {
     inquirer.prompt([
         {
             type: "list",
@@ -97,7 +97,7 @@ function lesserEmployeeData() {
             default: "University of Washington"
         },
         {
-            // if yes, go back again. If no, show the cards
+            // if yes, it restarts the process again. 
             type: "confirm",
             name: "newEmployee",
             message: "Would you like to add another team member?" 
@@ -117,7 +117,7 @@ function lesserEmployeeData() {
                     answers.github));
         }
         if (answers.newEmployee === true) {
-            lesserEmployeeData();
+            underEmployeeData();
         } else {
             var main = fs.readFileSync('index.html', 'utf8');
             main = main.replace(/{{teamTitle}}/g, teamTitle);
@@ -131,14 +131,13 @@ function lesserEmployeeData() {
             managerCard = managerCard.replace('{{officeNumber}}', manager.getOfficeNumber());
 
 
-            var cards = managerCard; // Initial cards only has the Manager card info.
+            var cards = managerCard; 
             for (var i = 0; i < teamMembers.length; i++) {
                 var employee = teamMembers[i];
-                // Cards adds and then equals every new employee card info.
                 cards += renderEmployee(employee);
             }
 
-            // Adds cards to main.html and outputs to team.html.
+            // Adds cards to index.html and outputs to team.html.
             main = main.replace('{{cards}}', cards);
             fs.writeFileSync('./output/team.html', main);
 
@@ -148,8 +147,7 @@ function lesserEmployeeData() {
     });
 }
 
-// renderEmployee function that is called above.
-
+// function makes the cards 
 function renderEmployee(employee) {
     if (employee.getRole() === "Intern") {
         var internCard = fs.readFileSync('html/intern.html', 'utf8');
