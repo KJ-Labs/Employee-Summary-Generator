@@ -20,13 +20,13 @@ function managerData() {
             type: "input",
             message: "What is the name of this team/project?",
             name: "teamTitle",
-            default: "Team1"
+            default: "Team-1"
         },
         {   // There is only 1 manager for a team.
             type: "input",
             message: "Who is the manager of this project?",
             name: "managerName",
-            default: "manager1"
+            default: "Bob Boberton"
         },
         {   // Employee ID.
             type: "input",
@@ -43,7 +43,8 @@ function managerData() {
         {
             type: "input",
             message: "What is the manager's office number?",
-            name: "officeNumber"
+            name: "officeNumber",
+            default: "612"
         }]).then(managerAnswers => {
             manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.officeNumber);
             teamTitle = managerAnswers.teamTitle;
@@ -59,7 +60,7 @@ function lesserEmployeeData() {
             message: "What is this employee's role?",
             name: "employeeRole",
             choices: ["Intern", "Engineer"],
-            default: "manager@gmail.com"
+            default: "Engineer"
         
         },
 
@@ -67,33 +68,33 @@ function lesserEmployeeData() {
             type: "input",
             message: "What is the employee's name?",
             name: "employeeName",
-            default: "manager@gmail.com"
+            default: "Kelsey"
         },
         {
             type: "input",
             message: "What is the employee's id?",
             name: "employeeId",
-            default: "manager@gmail.com"
+            default: "2"
         },
         {
             type: "input",
             message: "What is the employee's email?",
             name: "employeeEmail",
-            default: "manager@gmail.com"
+            default: "kelsey@gmail.com"
         },
         {
             type: "input",
             message: "What is the Engineer's Github?",
             name: "github",
             when: (userInput) => userInput.employeeRole === "Engineer",
-            default: "manager@gmail.com"
+            default: "https://github.com/KJ-Labs"
         },
         {
             type: "input",
             message: "What's the Intern's school?",
             name: "school",
             when: (userInput) => userInput.employeeRole === "Intern",
-            default: "manager@gmail.com"
+            default: "University of Washington"
         },
         {
             // if yes, go back again. If no, show the cards
@@ -104,15 +105,20 @@ function lesserEmployeeData() {
     ]).then(answers => {
 
         if (answers.employeeRole === "Intern") {
-            const employee = new Intern(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.school);
+            const employee = 
+                new Intern(answers.employeeName, 
+                    answers.employeeId, answers.employeeEmail, 
+                    answers.school);
             teamMembers.push(employee);
         } else if (answers.employeeRole === "Engineer") {
-            teamMembers.push(new Engineer(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.github));
+            teamMembers.push(new Engineer(answers.employeeName, 
+                    answers.employeeId, 
+                    answers.employeeEmail, 
+                    answers.github));
         }
         if (answers.newEmployee === true) {
             lesserEmployeeData();
         } else {
-
             var main = fs.readFileSync('index.html', 'utf8');
             main = main.replace(/{{teamTitle}}/g, teamTitle);
 
@@ -135,7 +141,6 @@ function lesserEmployeeData() {
 
             // Adds cards to main.html and outputs to team.html.
             main = main.replace('{{cards}}', cards);
-
             fs.writeFileSync('./output/output.html', main);
 
             // Console.log that the html has been generated
