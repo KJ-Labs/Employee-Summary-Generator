@@ -1,18 +1,18 @@
 {
-  "name": "team-generator",
+  "name": "team-summary-generator",
   "version": "1.0.0",
-  "description": "This CLI program generates an HTML file that displays information for a software developer team based on user input.",
+  "description": "This CLI program generates an HTML file that displays team information for an engineering team based on user input.",
   "main": "app.js",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --verbose test/*"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cml2377/team-generator.git"
+    "url": "git+https://github.com/KJ-Labs/Employee-Summary-Generator"
   },
   "keywords": [
     "team",
@@ -24,16 +24,17 @@
     "command",
     "node"
   ],
-  "author": "Crystal Ly",
-  "license": "ISC",
+  "author": "KJ-Labs",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cml2377/team-generator/issues"
+    "url": "https://github.com/KJ-Labs/Employee-Summary-Generator"
   },
-  "homepage": "https://github.com/cml2377/team-generator#readme",
+  "homepage": "https://github.com/KJ-Labs/Employee-Summary-Generator",
   "dependencies": {
     "inquirer": "^7.3.3"
   },
   "devDependencies": {
     "jest": "^24.9.0"
+
   }
 }
