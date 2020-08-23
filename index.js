@@ -2,9 +2,9 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 
 // Employee template based on these below.
-const Engineer = require("html/engineer");
-const Intern = require("html/intern");
-const Manager = require("html/manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 
 
 // This array fills in with employee data.
