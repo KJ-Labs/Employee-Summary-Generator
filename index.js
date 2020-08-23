@@ -131,7 +131,6 @@ function lesserEmployeeData() {
             managerCard = managerCard.replace('{{officeNumber}}', manager.getOfficeNumber());
 
 
-
             var cards = managerCard; // Initial cards only has the Manager card info.
             for (var i = 0; i < teamMembers.length; i++) {
                 var employee = teamMembers[i];
@@ -141,7 +140,7 @@ function lesserEmployeeData() {
 
             // Adds cards to main.html and outputs to team.html.
             main = main.replace('{{cards}}', cards);
-            fs.writeFileSync('./output/output.html', main);
+            fs.writeFileSync('./output/team.html', main);
 
             // Console.log that the html has been generated
             console.log("The team.html has been generated in output");
