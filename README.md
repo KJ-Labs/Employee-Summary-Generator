@@ -23,7 +23,7 @@ The purpose of this project was to create a customizable team generator based on
 - [Tests](#tests)
 - [Questions](#questions)
 - [Repository Link](#repository)
-- [External Credit](#external)
+
 
 
 
@@ -56,14 +56,14 @@ Yes, there are 4 test examples in the test folder. Please use NPM Run Test after
 
 ## Repository
 
-- [Project Repo](https://github.com/KJ-Labs/https://github.com/KJ-Labs/Employee-Summary-Generator)
+- [Project Repo](https://github.com/KJ-Labs/Employee-Summary-Generator)
 
 ## Screenshots
 ![Git](screenshot.PNG)  
 
 ## External Credit: 
-Icons: https://icons8.com/icon/set/internet/dusk
-Background Image: https://www.vecteezy.com/vector-art/101253-free-abstract-background-1
+- Icons: https://icons8.com/icon/set/internet/dusk
+- Background Image: https://www.vecteezy.com/vector-art/101253-free-abstract-background-1
 
 
 
